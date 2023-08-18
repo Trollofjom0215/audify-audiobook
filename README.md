@@ -6,7 +6,7 @@ Make sure you have the following Python libraries installed:
 <ul>
 <li>requests</li>
 <li>beautifulsoup4 (BS4)</li>
-<litkinter</li>
+<li>tkinter</li>
 <li>pygame</li>
 <ul>
 You can install these dependencies using pip:
