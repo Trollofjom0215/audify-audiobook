@@ -10,8 +10,10 @@ tkinter
 pygame
 You can install these dependencies using pip:
 
-'''bash
+```bash
 pip install requests beautifulsoup4 tkinter pygame
+
+```
 Usage
 Run the script using a Python interpreter.
 
