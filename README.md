@@ -8,7 +8,7 @@ Make sure you have the following Python libraries installed:
 <li>beautifulsoup4 (BS4)</li>
 <li>tkinter</li>
 <li>pygame</li>
-<ul>
+</ul>
 You can install these dependencies using pip:
 
 ```bash
