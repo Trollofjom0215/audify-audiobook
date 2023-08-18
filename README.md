@@ -1,7 +1,7 @@
 # audify-audiobook
 This is a Python script that searches for audiobooks on a website and retrieves relevant information such as the book title and link.
 
-Dependencies
+### Dependencies <br>
 Make sure you have the following Python libraries installed:
 
 requests
