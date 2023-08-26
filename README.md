@@ -1,13 +1,14 @@
 # audify-audiobook
 This is a Python script that searches for audiobooks on a website and retrieves relevant information such as the book title and link.
 
-Dependencies
+###Dependencies <br>
 Make sure you have the following Python libraries installed:
-
-requests
-beautifulsoup4 (BS4)
-tkinter
-pygame
+<ul>
+<li>requests</li>
+<li>beautifulsoup4 (BS4)</li>
+<li>tkinter</li>
+<li>pygame</li>
+</ul>
 You can install these dependencies using pip:
 
 ```bash
