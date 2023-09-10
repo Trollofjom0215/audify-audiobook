@@ -1,52 +1,17 @@
-# audify-audiobook
-This is a Python script that searches for audiobooks on a website and retrieves relevant information such as the book title and link.
+# Audiobook Search Application
 
-###Dependencies <br>
-Make sure you have the following Python libraries installed:
-<ul>
-<li>requests</li>
-<li>beautifulsoup4 (BS4)</li>
-<li>tkinter</li>
-<li>pygame</li>
-</ul>
-You can install these dependencies using pip:
+Welcome to the Audiobook Search Application repository! This repository contains a JavaScript application for mobile devices built using React Native. This README provides instructions on how to set up the development environment and run the application.
 
-```bash
-pip install requests beautifulsoup4 tkinter pygame
+## Prerequisites
 
-```
-Usage
-Run the script using a Python interpreter.
+Before you start, make sure you have the following dependencies installed:
 
-Enter the name of the audiobook you're looking for when prompted.
+- **Node.js LTS**: Node.js is a JavaScript runtime environment for server-side development. [Download Node.js LTS](https://nodejs.org/)
 
-The script will fetch data from the website `https://findaudiobook.net/`, search for the provided audiobook name, and display the relevant book titles and links.
+- **Expo Go**: Expo Go is a developer client that allows you to test and develop React Native applications on Android and iOS devices without building anything locally. It's free and open source. You can download it from your device's app store.
 
-Code Explanation
-The script does the following:
+- **Expo CLI**: This tool is used to manage your React Native projects. You can install it globally using npm:
 
-Imports required libraries:
+  ```sh
+  npm install -g expo-cli
 
-requests for sending HTTP requests
-beautifulsoup4 (BS4) for parsing HTML content
-tkinter for creating a GUI input prompt
-pygame for game development-related functionality
-urllib.parse for URL encoding
-re for regular expressions
-Retrieves the user-entered audiobook name and encodes it for URL representation.
-
-Constructs a search URL by appending the encoded audiobook name to the base URL.
-
-Sends an HTTP GET request to the search URL and creates a BeautifulSoup object to parse the HTML content.
-
-Defines a regular expression pattern to extract relevant URLs and book names.
-
-Finds all `<h2>` tags with the class entry-title post-title in the parsed HTML content.
-
-Loops through each found `<h2>` tag, converts it to a string, and searches for matches using the regex pattern.
-
-If matches are found, the script extracts the URL and title, and prints them.
-
-Note
-Make sure you have an active internet connection to fetch data from the website.
-This script assumes the structure of the website's HTML remains consistent. If the website's structure changes, the regex pattern may need adjustment.
