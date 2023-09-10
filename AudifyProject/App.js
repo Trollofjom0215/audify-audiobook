@@ -9,7 +9,7 @@ const App = ({ navigation }) => {
 
   const handleSearch = async searchText => {
     try {
-      const response = await axios.get(`http://192.168.1.74:5000/api/search?name=${searchText}`);
+      const response = await axios.get(`http://[IP ADDR]:[PORT]/api/search?name=${searchText}`);
       setBookList(response.data); // Update the bookList state with the response data
     } catch (error) {
       console.error('Error:', error);
