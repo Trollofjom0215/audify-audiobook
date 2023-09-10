@@ -25,7 +25,7 @@ npm install -g expo-cli
 cd AudifyProject
 ```
 
-6 .Install Dependencies: Install all the necessary dependencies for the application. This command will install the dependencies listed in the package.json file:
+6. Install Dependencies: Install all the necessary dependencies for the application. This command will install the dependencies listed in the package.json file:
 
 ```sh
 npm install
