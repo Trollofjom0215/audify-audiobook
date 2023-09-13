@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "AudifyProject",
-    "slug": "AudifyProject",
+    "name": "TestAudify",
+    "slug": "TestAudify",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

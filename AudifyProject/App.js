@@ -1,46 +1,25 @@
 import React, { useState } from 'react';
 import { TouchableOpacity, ScrollView, Image, View, Text, StyleSheet } from 'react-native';
-import SearchBar from './SearchBar';
-import axios from 'axios'; // Import the axios library
-import {Linking} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import  HomeScreen  from './routes/homeScreen';
+import AudioBook from './routes/Audiobook';
 
-const App = ({ navigation }) => {
-  const [bookList, setBookList] = useState([]);
 
-  const handleSearch = async searchText => {
-    try {
-      const response = await axios.get(`http://[IP ADDR]:[PORT]/api/search?name=${searchText}`);
-      setBookList(response.data); // Update the bookList state with the response data
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  };
+const Stack = createNativeStackNavigator(); //creating an object by calling this constructor which returns 2 properties 'Screen' and 'Navigator'
 
+const App = () => {
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.title}>Audify</Text>
-      <SearchBar onSearch={handleSearch} /><Text>{"\n"}</Text>
-      <ScrollView style={styles.bookList}>
-        <Text style = {{fontStyle : 'italic', fontSize : 15}}>Results:</Text><Text>{"\n"}</Text>
-        {bookList.map((book, index) => (
-          <View key={index} style={styles.bookItem}>
-            <TouchableOpacity onPress={() => Linking.openURL(book[1])}> 
-              <Image
-                source = {{ uri: book[2] }}
-                style = {styles.bookImage}
-              />
-            </TouchableOpacity>
-            <Text>
-              <TouchableOpacity onPress={ () => Linking.openURL(book[1])}>
-                <Text style={styles.bookTitle}>{book[0]}</Text>
-              </TouchableOpacity>
-            </Text>
-            <Text>{"\n"}</Text>
-          </View>
-        ))}
-      </ScrollView>
-    </ScrollView>
-  );
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Audify" component={HomeScreen} options={{title: 'Audify', headerStyle : { backgroundColor : '#6699CC', }, headerTintColor: '#f0f0f0', // Set the text color of the header
+        headerTitleStyle: {
+          fontWeight: 'bold', // Set the font weight of the header title
+          fontSize: 24,},}} />
+        <Stack.Screen name = "AudioBook" component = {AudioBook}/>
+      </Stack.Navigator>
+    </NavigationContainer>
+    );
 };
 
 const styles = StyleSheet.create({
@@ -76,10 +55,10 @@ const styles = StyleSheet.create({
   bookImage: {
     bordorRadius : 10,
     alignSelf : 'center',
-    width: 150, // Adjust the width as needed
-    height: 200, // Adjust the height as needed
-    resizeMode: 'cover', // Image resizing mode
-    marginBottom: 10, // Adjust margin as needed
+    width: 150, 
+    height: 200, 
+    resizeMode: 'cover',
+    marginBottom: 10, 
   },
 });
 

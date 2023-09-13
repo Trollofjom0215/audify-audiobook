@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 25,
-    marginTop: 50,
+    marginTop: 30,
   },
   input: {
     backgroundColor : '#c0c0c0',
