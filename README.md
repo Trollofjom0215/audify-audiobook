@@ -1,52 +1,48 @@
-# audify-audiobook
-This is a Python script that searches for audiobooks on a website and retrieves relevant information such as the book title and link.
+# Audify - An AudioBook App
 
-###Dependencies <br>
-Make sure you have the following Python libraries installed:
-<ul>
-<li>requests</li>
-<li>beautifulsoup4 (BS4)</li>
-<li>tkinter</li>
-<li>pygame</li>
-</ul>
-You can install these dependencies using pip:
+Welcome to the Audify repository! This repository contains a JavaScript application for mobile devices built using React Native. This README provides instructions on how to set up the development environment and run the application.
 
-```bash
-pip install requests beautifulsoup4 tkinter pygame
+## Prerequisites
 
+Before you start, make sure you have the following dependencies installed:
+
+
+1. Install Node.js LTS: If you haven't already, download and install Node.js LTS. This provides the necessary JavaScript runtime environment for server-side development.
+
+2. Install Expo CLI: Expo CLI is used to manage your React Native projects. Install it globally using npm:
+
+```sh
+npm install -g expo-cli
 ```
-Usage
-Run the script using a Python interpreter.
 
-Enter the name of the audiobook you're looking for when prompted.
+3. Install Expo Go: Download the Expo Go app from your device's app store (iOS or Android).
 
-The script will fetch data from the website `https://findaudiobook.net/`, search for the provided audiobook name, and display the relevant book titles and links.
+4. Clone the Repository: Clone this repository to your local machine:
 
-Code Explanation
-The script does the following:
+5. Navigate to the Project Directory: Change your working directory to the project's root folder:
 
-Imports required libraries:
+```sh
+cd AudifyProject
+```
 
-requests for sending HTTP requests
-beautifulsoup4 (BS4) for parsing HTML content
-tkinter for creating a GUI input prompt
-pygame for game development-related functionality
-urllib.parse for URL encoding
-re for regular expressions
-Retrieves the user-entered audiobook name and encodes it for URL representation.
+6. Install Dependencies: Install all the necessary dependencies for the application. This command will install the dependencies listed in the package.json file:
 
-Constructs a search URL by appending the encoded audiobook name to the base URL.
+```sh
+npm install
+```
 
-Sends an HTTP GET request to the search URL and creates a BeautifulSoup object to parse the HTML content.
+7. Start the Expo Development Server: Launch the Expo development server:
 
-Defines a regular expression pattern to extract relevant URLs and book names.
+```sh
+npx expo start
+```
+8. Testing with Expo Go: Use the Expo Go app on your mobile device to scan the QR code provided by the Expo development server. This will allow you to run and test the application on your device.
 
-Finds all `<h2>` tags with the class entry-title post-title in the parsed HTML content.
+That's it! You should now have the Audify app up and running on your mobile device for testing and development.
 
-Loops through each found `<h2>` tag, converts it to a string, and searches for matches using the regex pattern.
 
-If matches are found, the script extracts the URL and title, and prints them.
+License
+This project is licensed under the All Rights Reserved License.
 
-Note
-Make sure you have an active internet connection to fetch data from the website.
-This script assumes the structure of the website's HTML remains consistent. If the website's structure changes, the regex pattern may need adjustment.
+
+
