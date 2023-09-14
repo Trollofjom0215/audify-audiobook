@@ -8,13 +8,6 @@ const SearchBar = ({ onSearch }) => {
     onSearch(searchText);
   };
 
-  // const handleKeyPress = event => {
-  //   if(event.nativeEvent.key === 'enter' || event.nativeEvent.keyCode === 13){
-  //     handleSearch();
-  //     //dismissing the keyboard after pressing enter
-  //     //Keyboard.dismiss();
-  //   }
-  //}
   return (
     <View style={styles.container}>
       <TextInput

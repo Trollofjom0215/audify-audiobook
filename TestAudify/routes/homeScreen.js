@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TouchableOpacity, ScrollView, Image, View, Text, StyleSheet } from 'react-native';
 import SearchBar from './SearchBar';
 import axios from 'axios'; // Import the axios library
@@ -6,23 +6,45 @@ import {Linking} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import AudioBook from './Audiobook';
 
+
+
+
 const HomeScreen = () => {
   const [bookList, setBookList] = useState([]);
 
   const navigation = useNavigation();
 
+ 
+
+
+//asynchronous function that handles user text
   const handleSearch = async searchText => {
     try {
-      const response = await axios.get(`http://192.168.1.74:5000/api/search?name=${searchText}`);
+      const response = await axios.get(`http://192.168.1.10:5000/api/search?name=${searchText}`);
       setBookList(response.data); // Update the bookList state with the response data
     } catch (error) {
       console.error('Error:', error);
     }
   };
 
-  const navigationHandler = () => {
-    navigation.navigate("AudioBook")
-  }
+
+//asynchronous function that extracts the clicked link, requests scraping from backend and receives 
+//an array list of audio sources for the particular book clicked
+
+  const navigationHandler = async (book) => {
+    const link = book[1];
+    navigation.navigate("AudioBook", { link });
+  };
+
+  // function audiobookChapters(){
+  //   return chapterList;
+  // }
+
+  // useEffect(()=>{
+  //     console.log(chapterList);
+  //     return audiobookChapters;
+  //   },[chapterList]);
+
 
 
   return (
@@ -32,7 +54,7 @@ const HomeScreen = () => {
         <Text style = {{fontStyle : 'italic', fontSize : 15}}>Results:</Text><Text>{"\n"}</Text>
         {bookList.map((book, index) => (
           <View key={index} style={styles.bookItem}>
-            <TouchableOpacity onPress={navigationHandler}> 
+            <TouchableOpacity onPress={()=>navigationHandler(book)}> 
               <Image
                 source = {{ uri: book[2] }}
                 style = {styles.bookImage}

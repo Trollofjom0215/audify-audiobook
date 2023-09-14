@@ -4,7 +4,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import  HomeScreen  from './routes/homeScreen';
 import AudioBook from './routes/Audiobook';
-const Stack = createNativeStackNavigator(); //creating an object by calling this function which returns 2 properties 'Screen' and 'Navigator'
+
+
+const Stack = createNativeStackNavigator(); //creating an object by calling this constructor which returns 2 properties 'Screen' and 'Navigator'
 
 const App = () => {
   return (

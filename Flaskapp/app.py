@@ -49,6 +49,33 @@ def scrape_audiobook(soup):
     print(searchresult)
     return searchresult
 
+def nameprint(selected_audbook):
+    print(selected_audbook)
+
+
+
+
+def chapterScrape(selected_audbook):
+
+    htmlxmlcontent = requests.get(selected_audbook)
+    soup = BeautifulSoup(htmlxmlcontent.content, 'html.parser')
+
+    chapterslink = []
+
+    chapterTags = soup.find_all('audio')
+
+    for chapterTag in chapterTags:
+        source = chapterTag.find('source')
+        src = source.get('src')
+        #print(src)
+        chapterslink.append(src)
+
+    # print(chapterslink)
+    return chapterslink
+
+
+
+
 
 @app.route('/api/search', methods=['GET'])
 def search_audiobook():
@@ -56,6 +83,17 @@ def search_audiobook():
     soup = siteParser(audiobook_name)
     audiobook_list = scrape_audiobook(soup)
     return jsonify(audiobook_list)
+
+@app.route('/api/receivelink', methods = ['POST'])
+def linkReceive():     
+    selected_audbook = request.get_data(as_text=True)
+    linksarr = chapterScrape(selected_audbook)
+    nameprint(selected_audbook)
+    for arr in linksarr:
+        print("-"*80)
+        print(arr)
+    return jsonify(linksarr)
+
 
 if __name__ =='__main__':
 	app.run(debug=True,host="0.0.0.0")
