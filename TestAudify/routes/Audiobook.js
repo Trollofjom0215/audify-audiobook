@@ -6,36 +6,18 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {Audio} from 'expo-av';
 //importing Permission library to ask for permissions to audio speakers
 import { Permissions } from 'expo';
-import axios from 'axios'; // Import the axios library
 
 
-const AudioBook = ({ route }) =>{
-	//importing link from Parent component homescreen
+const AudioBook = () =>{
 
-	const { link } = route.params;
-	const [chapterList, setChapterList] = useState([]);
 	const [sound,setSound] = useState();
-
-	const chapList = async () => {
-		try {
-      		const response = await axios.post(`http://192.168.1.10:5000/api/receivelink`, link);
-      		setChapterList(response.data)
-      		console.log(response.data)
-      		console.log("\n"+'New Response from Flask received');
-      		// console.log(response.data)
-    	} 
-   		catch (error) {
-      		console.log("Error sending string to Flask", error);
-    	}
-    }
-    useEffect(()=>{
-    	chapList();
-    },[]);
 
 
 	//declaring an async function ; basically making this function wait for a promise from another async task
-	async function playSound(url) {
+	async function playSound() {
 		console.log('Loading Sound');
+
+		const url = "https://ipaudio.club/wp-content/uploads/PRIME/Sophie’s%20World/01.mp3?_=1";
 		
 		//Audio.Sound.createAsync function asynchronously loads the audio specified by the url and return an object with info about loaded audio
 		//await keyword ensures code waits for this operating before proceeding.
@@ -67,33 +49,20 @@ const AudioBook = ({ route }) =>{
 
 
 	return(
-		<ScrollView contentContainerStyle={styles.container}>
-      		<ScrollView contentContainerStyle={styles.chapterlist}>
-      		{chapterList.map((chapter, index) => (
-       		 <Button title={`Play Chapter ${index}`} key={index} onPress={()=>playSound(chapter)}/>
-      		))}
-      		</ScrollView>
-    	</ScrollView>
+		<View style = {styles.container}>
+			<Button title = "Play Audiobook" onPress = {playSound} />
+		</View>
+
 	);
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1, // Take up all available space
-    padding: 20, // Add padding around the content
-    backgroundColor: '#040404', // Set a background color
-  },
-  chapterlist: {
-    marginLeft : 5,
-    marginTop: 20,
-  },
-  content: {
-    color: '#f0f0f0',
-    alignSelf: 'center',
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginBottom: 10, // Add some bottom margin to separate the chapters
-  },
+	container : {
+		flex : 1,
+		justifyContent : 'center' ,
+		backgroundColor: '#040404',
+		padding: 10,
+	},
 });
 
 export default AudioBook;
